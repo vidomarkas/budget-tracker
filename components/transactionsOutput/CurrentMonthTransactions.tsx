@@ -29,8 +29,6 @@ export default function CurrentMonthTransactions() {
 				periodName="Total this month"
 				transactions={currentMonthTransactions}
 			/>
-
-			<Link href="/">Back home</Link>
 		</View>
 	);
 }

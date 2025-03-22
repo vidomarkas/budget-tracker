@@ -9,6 +9,7 @@ const TransactionsList = ({ transactions }) => {
 				amount={item.amount}
 				date={item.date}
 				user={item.user}
+				id={item.id}
 			/>
 		);
 	};

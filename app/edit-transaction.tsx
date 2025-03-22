@@ -8,21 +8,24 @@ import { TransactionsContext } from "@/store/transactions-context";
 export default function EditTransaction() {
 	const params = useLocalSearchParams();
 
-	const id = params?.transactionId;
+	const editedTransactionId = params?.transactionId;
 
 	const transactionsCtx = useContext(TransactionsContext);
 
-	console.log("id", id);
-
 	const deleteTransactionHandler = () => {
-		transactionsCtx.deleteTransaction(id);
-		console.log("deleted transaction id: ", id);
-		router.back(); //close the modal
+		transactionsCtx.deleteTransaction(editedTransactionId);
+		router.back();
 	};
 	const cancelHandler = () => {
 		router.back();
 	};
 	const confirmHandler = () => {
+		transactionsCtx.updateTransaction(editedTransactionId, {
+			description: "test",
+			amount: 9799.49,
+			date: new Date("2025-03-22"),
+			user: "Vik",
+		});
 		router.back();
 	};
 
@@ -35,7 +38,9 @@ export default function EditTransaction() {
 			}}
 		>
 			<Text style={{ marginBottom: 20 }}>edit transaction</Text>
-			<Text style={{ marginBottom: 20 }}>transaction id: {id}</Text>
+			<Text style={{ marginBottom: 20 }}>
+				transaction id: {editedTransactionId}
+			</Text>
 			<View
 				style={{
 					flexDirection: "row",

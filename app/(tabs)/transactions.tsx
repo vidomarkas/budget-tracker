@@ -1,12 +1,12 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
-// import TransactionsOutput from "@/components/transactionsOutput/TransactionsOutput";
-// import { useContext } from "react";
-// import { TransactionsContext } from "@/store/transactions-context";
-import CurrentMonthTransactions from "@/components/transactionsOutput/CurrentMonthTransactions";
+import TransactionsOutput from "@/components/transactionsOutput/TransactionsOutput";
+import { useContext } from "react";
+import { TransactionsContext } from "@/store/transactions-context";
+// import CurrentMonthTransactions from "@/components/transactionsOutput/CurrentMonthTransactions";
 
 export default function Transactions() {
-	// const transactionsCtx = useContext(TransactionsContext);
+	const transactionsCtx = useContext(TransactionsContext);
 	return (
 		<View
 			style={{
@@ -15,14 +15,12 @@ export default function Transactions() {
 				alignItems: "center",
 			}}
 		>
-			{/* <Text>Transactions</Text> */}
-			{/* <TransactionsOutput
+			<TransactionsOutput
 				periodName="All transactions"
 				transactions={transactionsCtx.transactions}
-			/> */}
-			<CurrentMonthTransactions />
-
-			<Link href="/">Back home</Link>
+				fallbackText="No Transactions"
+			/>
+			{/* <CurrentMonthTransactions /> */}
 		</View>
 	);
 }

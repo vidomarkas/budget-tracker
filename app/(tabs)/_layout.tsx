@@ -43,10 +43,10 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="manage-transaction"
+				name="add-new-transaction"
 				options={{
-					title: "+",
-					headerShown: false,
+					title: "Add new transaction",
+					headerShown: true,
 					tabBarIcon: ({ color, focused }) => (
 						<TabBarIcon
 							name={focused ? "add-circle" : "add-circle-outline"}
@@ -59,7 +59,7 @@ export default function TabLayout() {
 				name="settings"
 				options={{
 					title: "Settings",
-					headerShown: false,
+					headerShown: true,
 					tabBarIcon: ({ color, focused }) => (
 						<TabBarIcon
 							name={

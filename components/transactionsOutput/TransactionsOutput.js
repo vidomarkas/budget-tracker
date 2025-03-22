@@ -5,11 +5,16 @@ import TransactionsList from "@/components/transactionsOutput/TransactionsList";
 const TransactionsOutput = ({ periodName, transactions }) => {
 	return (
 		<View>
-			<TransactionsSummary
-				transactions={transactions}
-				periodName={periodName}
-			/>
-			<TransactionsList transactions={transactions} />
+			{transactions.length < 1 && <Text>No transactions</Text>}
+			{transactions.length > 0 && (
+				<>
+					<TransactionsSummary
+						transactions={transactions}
+						periodName={periodName}
+					/>
+					<TransactionsList transactions={transactions} />
+				</>
+			)}
 		</View>
 	);
 };

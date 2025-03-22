@@ -49,8 +49,8 @@ const DUMMY_TRANSACTIONS = [
 export const TransactionsContext = createContext({
 	transactions: [],
 	addTransaction: ({ description, amount, date }) => {},
-	updateTransaction: (id, { description, amount, date }) => {},
-	deleteTransaction: ({ id }) => {},
+	updateTransaction: (id, { description, amount, date, user }) => {},
+	deleteTransaction: (id) => {},
 });
 
 function transactionReducer(state, action) {
@@ -62,10 +62,13 @@ function transactionReducer(state, action) {
 			const updatableTransactionIndex = state.findIndex(
 				(transaction) => transaction.id === action.payload.id
 			);
+
+			console.log("action.payload.id", action.payload.id);
 			const updatableTransaction = state[updatableTransactionIndex];
+			console.log("updatableTransaction", updatableTransaction);
 			const updatedTransaction = {
 				...updatableTransaction,
-				...action.payload.data,
+				...action.payload.transactionData,
 			};
 			const updatedTransactions = [...state];
 			updatedTransactions[updatableTransactionIndex] = updatedTransaction;

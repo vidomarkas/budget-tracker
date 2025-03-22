@@ -1,8 +1,7 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 
-export default function ManageTransaction() {
-	
+export default function AddNewTransaction() {
 	return (
 		<View
 			style={{
@@ -11,7 +10,7 @@ export default function ManageTransaction() {
 				alignItems: "center",
 			}}
 		>
-			<Text style={{ marginBottom: 20 }}>Manage Transaction</Text>
+			<Text style={{ marginBottom: 20 }}>Add new Transaction</Text>
 
 			<Link href="/">Back home</Link>
 		</View>
