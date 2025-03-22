@@ -29,7 +29,7 @@ export default function TabLayout() {
 				name="transactions"
 				options={{
 					title: "Transactions",
-					headerShown: false,
+					// headerShown: false,
 					tabBarIcon: ({ color, focused }) => (
 						<TabBarIcon
 							name={
@@ -43,7 +43,7 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="add-transaction"
+				name="manage-transaction"
 				options={{
 					title: "+",
 					headerShown: false,

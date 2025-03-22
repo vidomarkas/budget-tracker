@@ -11,6 +11,7 @@ export default function Settings() {
 			}}
 		>
 			<Text>Settings</Text>
+			<Text>Currency: £</Text>
 
 			<Link href="/">Back home</Link>
 		</View>
