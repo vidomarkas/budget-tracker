@@ -4,6 +4,7 @@ import IconButton from "../components/UI/IconButton";
 import { Button } from "../components/UI/Button";
 import { useContext } from "react";
 import { TransactionsContext } from "@/store/transactions-context";
+import TransactionForm from "@/components/ManageTransaction/TransactionForm";
 
 export default function EditTransaction() {
 	const params = useLocalSearchParams();
@@ -12,6 +13,10 @@ export default function EditTransaction() {
 
 	const transactionsCtx = useContext(TransactionsContext);
 
+	const selectedTransaction = transactionsCtx.transactions.find(
+		(transaction) => transaction.id === editedTransactionId
+	);
+
 	const deleteTransactionHandler = () => {
 		transactionsCtx.deleteTransaction(editedTransactionId);
 		router.back();
@@ -19,13 +24,8 @@ export default function EditTransaction() {
 	const cancelHandler = () => {
 		router.back();
 	};
-	const confirmHandler = () => {
-		transactionsCtx.updateTransaction(editedTransactionId, {
-			description: "test",
-			amount: 9799.49,
-			date: new Date("2025-03-22"),
-			user: "Vik",
-		});
+	const confirmHandler = (transactionData) => {
+		transactionsCtx.updateTransaction(editedTransactionId, transactionData);
 		router.back();
 	};
 
@@ -41,16 +41,12 @@ export default function EditTransaction() {
 			<Text style={{ marginBottom: 20 }}>
 				transaction id: {editedTransactionId}
 			</Text>
-			<View
-				style={{
-					flexDirection: "row",
-				}}
-			>
-				<Button onPress={confirmHandler}>Update</Button>
-				<Button mode="flat" onPress={cancelHandler}>
-					Cancel
-				</Button>
-			</View>
+			<TransactionForm
+				onCancel={cancelHandler}
+				onSubmit={confirmHandler}
+				defaultValues={selectedTransaction}
+			/>
+
 			<IconButton
 				icon="trash"
 				color="red"

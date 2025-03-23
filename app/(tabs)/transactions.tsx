@@ -18,7 +18,6 @@ export default function Transactions() {
 			<TransactionsOutput
 				periodName="All transactions"
 				transactions={transactionsCtx.transactions}
-				fallbackText="No Transactions"
 			/>
 			{/* <CurrentMonthTransactions /> */}
 		</View>
